@@ -26,7 +26,7 @@ export default function ModalTransferencia({ billeteras, onClose }) {
         { headers: { Authorization: token } }
       );
 
-      setMensaje(`✅ ${res.data.mensaje}.\nSaldo origen: ${res.data.saldoOrigen}, saldo destino: ${res.data.saldoDestino}`);
+      setMensaje(` ${res.data.mensaje}.\nSaldo origen: ${res.data.saldoOrigen}, saldo destino: ${res.data.saldoDestino}`);
       onClose();
     } catch (err) {
       console.error('Error al transferir:', err.response?.data || err.message);

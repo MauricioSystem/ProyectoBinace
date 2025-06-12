@@ -1,7 +1,6 @@
 const { AnuncioCompra, RespuestaCompra, Transaccion, Billetera, Moneda, User } = require('../models');
 const fs = require('fs');
 
-// Crear anuncio de compra
 const crearAnuncioCompra = async (req, res) => {
   try {
     const { descripcion, moneda, cantidad, precioUnitario } = req.body;
@@ -29,7 +28,7 @@ const crearAnuncioCompra = async (req, res) => {
   }
 };
 
-// Listar anuncios
+
 const listarAnuncios = async (req, res) => {
   try {
     const { moneda } = req.query;
@@ -48,7 +47,7 @@ const listarAnuncios = async (req, res) => {
   }
 };
 
-// Responder anuncio
+
 const responderAnuncio = async (req, res) => {
   try {
     const { anuncioId } = req.params;
@@ -56,7 +55,7 @@ const responderAnuncio = async (req, res) => {
 
     const anuncio = await AnuncioCompra.findByPk(anuncioId);
     if (!anuncio || anuncio.estado !== 'abierto') {
-      return res.status(400).json({ error: 'Anuncio no válido o cerrado' });
+      return res.status(400).json({ error: 'Anuncio  cerrado' });
     }
 
     if (!req.file) {
@@ -89,7 +88,7 @@ const responderAnuncio = async (req, res) => {
   }
 };
 
-// Aceptar respuesta y sumar saldo
+
 const aceptarRespuesta = async (req, res) => {
   try {
     const { anuncioId } = req.params;
@@ -109,13 +108,11 @@ const aceptarRespuesta = async (req, res) => {
       return res.status(400).json({ error: 'Respuesta no válida' });
     }
 
-    // Verificar que la moneda existe (por nombre)
     const monedaExistente = await Moneda.findOne({ where: { nombre: anuncio.moneda } });
     if (!monedaExistente) {
       return res.status(404).json({ error: 'La moneda no existe en la base de datos.' });
     }
 
-    // Obtener la billetera del usuario para esa moneda
     const billetera = await Billetera.findOne({
       where: { usuarioId, monedaId: monedaExistente.id }
     });
@@ -124,11 +121,10 @@ const aceptarRespuesta = async (req, res) => {
       return res.status(500).json({ error: 'No tienes una billetera para esta moneda.' });
     }
 
-    // Sumar el saldo en la billetera
     billetera.saldo += parseFloat(anuncio.cantidad);
     await billetera.save();
 
-    // Crear transacción
+
     const transaccion = await Transaccion.create({
       tipo: 'compra',
       monto: anuncio.cantidad,
@@ -138,7 +134,7 @@ const aceptarRespuesta = async (req, res) => {
       estado: 'completada'
     });
 
-    // Actualizar estados
+//actualiza
     respuesta.estado = 'aceptado';
     anuncio.estado = 'finalizado';
     await respuesta.save();
@@ -151,7 +147,6 @@ const aceptarRespuesta = async (req, res) => {
   }
 };
 
-// Cancelar compra
 const cancelarCompra = async (req, res) => {
   try {
     const { anuncioId } = req.params;
@@ -182,7 +177,7 @@ const cancelarCompra = async (req, res) => {
   }
 };
 
-// Ver mis anuncios
+
 const misAnuncios = async (req, res) => {
   try {
     const usuarioId = req.user.id;

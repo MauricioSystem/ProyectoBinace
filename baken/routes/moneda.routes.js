@@ -3,7 +3,7 @@ const router = express.Router();
 const monedaController = require('../controllers/moneda.controller.js');
 const authMiddleware = require('../middlewares/auth'); 
 
-// CRUD Moneda
+
 router.get('/', monedaController.getAllMonedas);
 router.get('/:id', monedaController.getMonedaById);
 router.post('/', monedaController.createMoneda);

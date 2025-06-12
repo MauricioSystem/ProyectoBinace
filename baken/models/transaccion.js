@@ -22,11 +22,10 @@ const Transaccion = sequelize.define('Transaccion', {
   },
   moneda: {
     type: DataTypes.STRING,
-    allowNull: true, // Opcional dependiendo de la lógica
+    allowNull: true, 
   },
 });
 
-// Relaciones
 Billetera.hasMany(Transaccion, { foreignKey: 'billeteraId' });
 Transaccion.belongsTo(Billetera, { foreignKey: 'billeteraId' });
 

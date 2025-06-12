@@ -1,7 +1,6 @@
 const { AnuncioVenta, RespuestaVenta, User, Billetera, Transaccion, Moneda } = require('../models');
 const fs = require('fs');
 
-// Crear anuncio de venta
 const crearAnuncioVenta = async (req, res) => {
   try {
     const { descripcion, moneda, cantidadDisponible, precioUnidad } = req.body;
@@ -34,7 +33,7 @@ const crearAnuncioVenta = async (req, res) => {
   }
 };
 
-// Listar anuncios de venta
+
 const listarAnuncios = async (req, res) => {
   try {
     const { moneda } = req.query;
@@ -63,7 +62,6 @@ const listarAnuncios = async (req, res) => {
   }
 };
 
-// Responder a un anuncio de venta
 const responderAnuncio = async (req, res) => {
   try {
     const { anuncioId } = req.params;
@@ -84,7 +82,7 @@ const responderAnuncio = async (req, res) => {
       respuesta.imagenComprobante = `/uploads/${req.file.filename}`;
       respuesta.estado = 'pendiente';
       respuesta.compradorId = compradorId;
-      respuesta.cantidad = anuncio.cantidadDisponible; // ¡Aseguramos que nunca esté null!
+      respuesta.cantidad = anuncio.cantidadDisponible;
       await respuesta.save();
     } else {
       respuesta = await RespuestaVenta.create({
@@ -92,7 +90,7 @@ const responderAnuncio = async (req, res) => {
         compradorId,
         imagenComprobante: `/uploads/${req.file.filename}`,
         estado: 'pendiente',
-        cantidad: anuncio.cantidadDisponible, // 👈 ¡campo importante!
+        cantidad: anuncio.cantidadDisponible, 
       });
     }
 
@@ -106,7 +104,7 @@ const responderAnuncio = async (req, res) => {
   }
 };
 
-// Aceptar respuesta (finalizar venta)
+
 const aceptarRespuesta = async (req, res) => {
   try {
     const { anuncioId } = req.params;
@@ -155,7 +153,7 @@ const aceptarRespuesta = async (req, res) => {
   }
 };
 
-// Cancelar venta
+
 const cancelarVenta = async (req, res) => {
   try {
     const { anuncioId } = req.params;

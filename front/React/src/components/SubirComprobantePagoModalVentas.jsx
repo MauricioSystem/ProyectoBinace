@@ -15,7 +15,7 @@ export default function SubirComprobantePagoModalVentas({ anuncioId, onClose }) 
 
     const formData = new FormData();
     formData.append('imagenComprobante', imagen);
-    formData.append('cantidad', cantidad); // ✅ Enviar cantidad al backend
+    formData.append('cantidad', cantidad); 
 
     try {
       await api.post(`api/ventas/anuncios/${anuncioId}/responder`, formData, {

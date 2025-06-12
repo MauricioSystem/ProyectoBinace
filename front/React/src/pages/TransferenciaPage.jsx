@@ -32,7 +32,7 @@ export default function TransferenciaPage() {
           billeteras={billeteras}
           onClose={() => {
             setShowModal(false);
-            cargarBilleteras(); // 🔥 Recargar saldos después de la transferencia
+            cargarBilleteras(); 
           }}
         />
       )}

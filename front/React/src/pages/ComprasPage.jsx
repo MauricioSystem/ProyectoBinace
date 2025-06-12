@@ -46,7 +46,6 @@ export default function ComprasPage() {
     <div>
       <h1>Compras</h1>
       <div style={{ display: 'flex', gap: '2rem' }}>
-        {/* Panel izquierdo: Selección de moneda y listado de anuncios */}
         <div style={{ flex: 1 }}>
           <h3>Selecciona la moneda que quieres comprar:</h3>
           <select
@@ -68,7 +67,6 @@ export default function ComprasPage() {
           </ul>
         </div>
 
-        {/* Panel derecho: Crear anuncio */}
         <div style={{ flex: 1 }}>
           <h3>¿No encontraste un anuncio?</h3>
           <button onClick={() => setShowModalCrear(true)}>Crear Anuncio de Compra</button>
@@ -86,13 +84,12 @@ export default function ComprasPage() {
         </div>
       </div>
 
-      {/* Modal para subir comprobante de pago */}
       {showModalPago && (
         <SubirPagoModal
           anuncioId={anuncioIdPago}
           onClose={() => setShowModalPago(false)}
           onPagoRealizado={() => {
-            cargarAnuncios(); // recargar lista de anuncios
+            cargarAnuncios(); 
           }}
         />
       )}

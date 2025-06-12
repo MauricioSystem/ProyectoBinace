@@ -102,7 +102,6 @@ export default function CrudAdminPage() {
     <div>
       <h1>Panel de Administración</h1>
 
-      {/* Sección de usuarios */}
       <section style={{ marginBottom: '2rem' }}>
         <h2>Usuarios</h2>
         <ul>
@@ -117,7 +116,6 @@ export default function CrudAdminPage() {
         </ul>
       </section>
 
-      {/* Sección de monedas */}
       <section>
         <h2>Monedas</h2>
         <form onSubmit={crearMoneda} style={{ marginBottom: '1rem' }}>

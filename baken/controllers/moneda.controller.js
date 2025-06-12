@@ -1,6 +1,6 @@
 const { Moneda } = require('../models');
 
-// Listar todas las monedas
+
 exports.getAllMonedas = async (req, res) => {
   try {
     const monedas = await Moneda.findAll();
@@ -11,7 +11,7 @@ exports.getAllMonedas = async (req, res) => {
   }
 };
 
-// Obtener moneda por id
+
 exports.getMonedaById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -26,7 +26,7 @@ exports.getMonedaById = async (req, res) => {
   }
 };
 
-// Crear nueva moneda
+
 exports.createMoneda = async (req, res) => {
   try {
     const { nombre, simbolo, tipoCambioUSD } = req.body;
@@ -38,7 +38,7 @@ exports.createMoneda = async (req, res) => {
   }
 };
 
-// Actualizar moneda
+
 exports.updateMoneda = async (req, res) => {
   try {
     const { id } = req.params;
@@ -55,7 +55,7 @@ exports.updateMoneda = async (req, res) => {
   }
 };
 
-// Eliminar moneda
+
 exports.deleteMoneda = async (req, res) => {
   try {
     const { id } = req.params;

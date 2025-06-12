@@ -7,8 +7,8 @@ const auth = require('../middlewares/auth');
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 
-router.get('/', auth, admin, authController.listarUsuarios);       // Listar usuarios
-router.put('/:id/rol', auth, admin, authController.cambiarRol);    // Cambiar rol admin o usuario
+router.get('/', auth, admin, authController.listarUsuarios);       
+router.put('/:id/rol', auth, admin, authController.cambiarRol);    
 
 
 module.exports = router;

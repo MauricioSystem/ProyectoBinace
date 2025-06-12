@@ -3,27 +3,26 @@ import cors from 'cors';
 import { sequelize } from './models/index.js';
 import authRoutes from './routes/auth.routes.js';
 import billeteraRoutes from './routes/billetera.routes.js';
-import transaccionRoutes from './routes/transaccion.route.js';
+//import transaccionRoutes from './routes/transaccion.route.js';
 import monedaRoutes from './routes/moneda.routes.js';
 import ventaRoutes from './routes/venta.routes.js';
-import compraRoutes from './routes/compra.routes.js';  // ✅ IMPORTA la ruta de compra
-import transferenciaRoutes from './routes/transferencia.routes.js'; // ✅ IMPORTA la ruta de transferencias
+import compraRoutes from './routes/compra.routes.js';  
+import transferenciaRoutes from './routes/transferencia.routes.js';
 
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173', // Asegúrate de que coincide con tu front
+  origin: 'http://localhost:5173', 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 }));
 
 app.use(express.json());
 
-// ✅ Rutas
 app.use('/', authRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/billeteras', billeteraRoutes);
-app.use('/api/transacciones', transaccionRoutes);
+//app.use('/api/transacciones', transaccionRoutes);
 app.use('/api/monedas', monedaRoutes);
 app.use('/api/ventas', ventaRoutes);
 app.use('/api/compra', compraRoutes);

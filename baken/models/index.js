@@ -10,7 +10,7 @@ const AnuncioVenta = require('./AnuncioVenta.js');
 const RespuestaVenta = require('./RespuestaVenta.js');
 const Transferencia = require('./Transferencia.js'); 
 
-// Relaciones existentes
+
 User.hasMany(Billetera, { foreignKey: 'usuarioId' });
 Billetera.belongsTo(User, { foreignKey: 'usuarioId' });
 

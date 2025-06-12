@@ -42,7 +42,7 @@ export default function CrearAnuncioCompraModal({ onClose, onAnuncioCreado, mone
   };
 
   return (
-    <div style={{ background: '#fff', padding: '1rem', border: '1px solid #ccc' }}>
+    <div style={{ background: 'black', padding: '1rem', border: '1px solid #ccc' }}>
       <h3>Crear Anuncio de Compra</h3>
       {mensaje && <p style={{ color: 'red' }}>{mensaje}</p>}
       <form onSubmit={handleSubmit}>

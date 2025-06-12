@@ -4,7 +4,6 @@ const upload = require('../middlewares/upload');
 const compraController = require('../controllers/compra.controller');
 const authMiddleware = require('../middlewares/auth');
 
-// Ruta base: /api/compra
 router.get('/anuncios', authMiddleware, compraController.listarAnuncios);
 router.post('/anuncios', authMiddleware, upload.single('imagen'), compraController.crearAnuncioCompra);
 router.post('/anuncios/:anuncioId/responder', authMiddleware, upload.single('imagen'), compraController.responderAnuncio);

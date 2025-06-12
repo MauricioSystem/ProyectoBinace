@@ -11,10 +11,9 @@ export default function Home() {
 
   const token = localStorage.getItem('token');
 
-  // Cargar billeteras
-  useEffect(() => {
+    useEffect(() => {
     if (!token) {
-      setMensaje('No autorizado. Debes iniciar sesión.');
+      setMensaje('Debes iniciar sesión');
       return;
     }
 
@@ -23,10 +22,10 @@ export default function Home() {
         const res = await axios.get('http://localhost:3000/api/billeteras', {
           headers: { Authorization: token }
         });
-        console.log('✅ Billeteras cargadas:', res.data);
+        console.log('Billeteras cargadas:', res.data);
         setBilleteras(res.data);
       } catch (err) {
-        console.error('❌ Error al cargar billeteras:', err.response?.data || err.message);
+        console.error('Error al cargar billeteras:', err.response?.data || err.message);
         setMensaje('Error al cargar billeteras');
       }
     };
@@ -34,7 +33,7 @@ export default function Home() {
     cargarBilleteras();
   }, [token]);
 
-  // Cargar monedas
+
   useEffect(() => {
     if (!token) return;
 
@@ -43,10 +42,10 @@ export default function Home() {
         const res = await axios.get('http://localhost:3000/api/monedas', {
           headers: { Authorization: `Bearer ${token}` }
         });
-        console.log('✅ Monedas cargadas:', res.data);
+        console.log(' Monedas cargadas:', res.data);
         setMonedas(res.data);
       } catch (err) {
-        console.error('❌ Error al cargar monedas:', err.response?.data || err.message);
+        console.error(' Error al cargar monedas:', err.response?.data || err.message);
         setMensaje('Error al cargar monedas');
       }
     };
@@ -54,7 +53,6 @@ export default function Home() {
     cargarMonedas();
   }, [token]);
 
-  // Crear billetera
   const crearBilletera = async () => {
     if (!monedaSeleccionada) return setMensaje('Selecciona una moneda');
 
@@ -64,13 +62,13 @@ export default function Home() {
         { moneda: monedaSeleccionada },
         { headers: { Authorization: token } }
       );
-      console.log('✅ Billetera creada:', res.data);
+      console.log('Billetera creada:', res.data);
       setBilleteras([...billeteras, res.data]);
       setMensaje('Billetera creada con éxito');
       setMonedaSeleccionada('');
       setShowModal(false);
     } catch (err) {
-      console.error('❌ Error al crear billetera:', err.response?.data || err.message);
+      console.error(' Error al crear billetera:', err.response?.data || err.message);
       setMensaje(err.response?.data?.error || 'Error al crear billetera');
     }
   };

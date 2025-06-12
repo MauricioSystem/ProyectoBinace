@@ -46,7 +46,6 @@ export default function VentasPage() {
     <div>
       <h1>Ventas</h1>
       <div style={{ display: 'flex', gap: '2rem' }}>
-        {/* Panel izquierdo: Selección de moneda y listado de anuncios */}
         <div style={{ flex: 1 }}>
           <h3>Selecciona la moneda que quieres vender:</h3>
           <select
@@ -68,7 +67,6 @@ export default function VentasPage() {
           </ul>
         </div>
 
-        {/* Panel derecho: Crear anuncio */}
         <div style={{ flex: 1 }}>
           <h3>¿No encontraste un comprador?</h3>
           <button onClick={() => setShowModalCrear(true)}>Crear Anuncio de Venta</button>

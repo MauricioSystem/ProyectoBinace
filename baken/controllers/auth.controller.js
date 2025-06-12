@@ -2,10 +2,9 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user'); 
 
-// controller/auth.controller.js
 exports.register = async (req, res) => {
   try {
-    const { username, password, esAdmin = false } = req.body; // <- aquí
+    const { username, password, esAdmin = false } = req.body;
 
     if (!username || !password) {
       return res.status(400).json({ error: 'Username y password son requeridos' });
@@ -17,7 +16,7 @@ exports.register = async (req, res) => {
     }
 
     const hash = await bcrypt.hash(password, 10);
-    const user = await User.create({ username, password: hash, esAdmin }); // <- aquí
+    const user = await User.create({ username, password: hash, esAdmin }); 
 
     res.status(201).json({ message: 'Usuario creado', userId: user.id });
   } catch (error) {
@@ -26,7 +25,6 @@ exports.register = async (req, res) => {
   }
 };
 
-// controller/auth.controller.js
 exports.login = async (req, res) => {
   try {
     const { username, password } = req.body;

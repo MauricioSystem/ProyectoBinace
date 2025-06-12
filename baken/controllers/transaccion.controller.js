@@ -1,4 +1,4 @@
-const { Billetera, Transaccion } = require('../models');
+/*const { Billetera, Transaccion } = require('../models');
 
 exports.crearTransaccion = async (req, res) => {
   try {
@@ -33,3 +33,4 @@ exports.crearTransaccion = async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor.' });
   }
 };
+*/

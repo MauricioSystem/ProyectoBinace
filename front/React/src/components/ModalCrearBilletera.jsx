@@ -18,7 +18,7 @@ export default function ModalCrearBilletera({
       zIndex: 9999
     }}>
       <div style={{
-        background: 'white',
+        background: 'rgba(81, 81, 81, 1)',
         padding: '2rem',
         borderRadius: '8px',
         width: '300px',
@@ -60,7 +60,7 @@ export default function ModalCrearBilletera({
           <button
             onClick={onClose}
             style={{
-              backgroundColor: '#f44336',
+              backgroundColor: '#f436',
               color: 'white',
               border: 'none',
               padding: '0.5rem 1rem',
